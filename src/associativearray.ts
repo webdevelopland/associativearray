@@ -141,7 +141,7 @@ export class AssociativeArray {
     this.names.reverse();
   }
 
-  // Get object form
+  // Get object (no recursion)
   object() {
     var object: any = {};
     for (let i in this.names) {
@@ -150,14 +150,14 @@ export class AssociativeArray {
     return object;
   }
 
-  // Import from object form
-  importObject(object: any) {
+  // Import from object (no recursion)
+  fromObject(object: any) {
     for (let name in object) {
       this.add(name, object[name]);
     }
   }
 
-  // Get complex array form
+  // Get simple array
   array() {
     var complex = [];
     for (let i in this.names) {
@@ -169,10 +169,51 @@ export class AssociativeArray {
     return complex;
   }
 
-  // Import from array form
-  importArray(array: Array<any>) {
+  // Import from simple array
+  fromArray(array: Array<any>) {
     for (let v of array) {
       this.push(v);
+    }
+  }
+
+  // Export as array form (recursive)
+  exportArray() {
+    var complex = [];
+    for (let i in this.names) {
+
+      var classname = this.values[i].constructor.name;
+      if (classname === "AssociativeArray") {
+        var value = this.values[i].exportArray();
+        var type = "AssociativeArray";
+      } else {
+        var value = this.values[i];
+        var type = "Object";
+      }
+
+      complex.push({
+        name: this.names[i],
+        value: value,
+        type: type
+      });
+    }
+    return complex;
+  }
+
+  // Import from array form (recursive)
+  importArray(array: Array<any>) {
+    for (let v of array) {
+      if (not(v.name) || not(v.value) || not(v.type)) {
+        throw "Invalid Array";
+      }
+
+      if (v.type === "AssociativeArray") {
+        var associativeArray = new AssociativeArray();
+        associativeArray.importArray(v.value);
+        this.add(v.name, associativeArray);
+      } else {
+        this.add(v.name, v.value);
+      }
+
     }
   }
 

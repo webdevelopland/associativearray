@@ -1,5 +1,5 @@
 # AssociativeArray
-## v1.0.0 ( last update: 9 dec 2017 )
+## v1.1.0 ( last update: 10 dec 2017 )
 Associative array. Typescript included.
 
 ### Install
@@ -78,7 +78,7 @@ arr.add("string name 3", "string 3" );
 
 var name = arr.search("string 2"); // name = "string name 2"
 ```
-### import from array and object
+### import from simple array and object
 ```javascript
 var array = [1,2,3,4,5,6];
 var arr1 = new AssociativeArray();
@@ -93,6 +93,25 @@ arr2.importObject(object);
 
 console.log(arr1.stringify());
 console.log(arr2.stringify());
+```
+### AssociativeArray -> Array form -> AssociativeArray
+```javascript
+var aa = new AssociativeArray();
+aa.add("parent 1", "A");
+aa.add("parent 2", "B");
+aa.add("parent 3", "C");
+
+var child = new AssociativeArray();
+child.add("child 1", "content 1");
+child.add("child 2", "content 2");
+child.add("child 3", "content 3");
+aa.add("parent 4", child);
+
+var array = aa.exportArray();
+
+var aa2 = new AssociativeArray();
+aa2.importArray(array);
+console.log(aa2.stringify());
 ```
 ### copy() & share()
 ```javascript
