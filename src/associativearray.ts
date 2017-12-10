@@ -1,4 +1,5 @@
 import { is, not, isObject, isArray, isString } from 'existjs';
+import { isAssociativeArray } from './is-associativearray';
 import { randstr } from './randstr';
 
 // Dictinary
@@ -112,8 +113,7 @@ export class AssociativeArray {
     for (let i in this.names) {
       trace += `${tab}[${this.names[i]}] `;
       if (isObject(this.values[i])) {
-        var classname = this.values[i].constructor.name;
-        if (classname === "AssociativeArray") {
+        if (isAssociativeArray(this.values[i])) {
           trace += "\n" + this.values[i].stringify(tab + "__ ");
         } else {
           trace += JSON.stringify(this.values[i]) + "\n";
@@ -181,8 +181,7 @@ export class AssociativeArray {
     var complex = [];
     for (let i in this.names) {
 
-      var classname = this.values[i].constructor.name;
-      if (classname === "AssociativeArray") {
+      if (isAssociativeArray(this.values[i])) {
         var value = this.values[i].exportArray();
         var type = "AssociativeArray";
       } else {

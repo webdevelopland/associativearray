@@ -1,5 +1,5 @@
 # AssociativeArray
-## v1.1.0 ( last update: 10 dec 2017 )
+## v1.2.0 ( last update: 10 dec 2017 )
 Associative array. Typescript included.
 
 ### Install
@@ -20,7 +20,7 @@ import { AssociativeArray } from 'associativearray';
 
 Browser
 ```javascript
-<script src='/node_modules/associativearray/dist/associativearray-min.js'></script>
+<script src='/node_modules/associativearray/dist/aa-min.js'></script>
 <script>
   var arr = new dist.AssociativeArray();
 </script>
@@ -160,6 +160,18 @@ arr.sort((a, b) => {
   else return 0;
 });
 console.log(arr.stringify());
+```
+### is that AssociativeArray?
+```javascript
+const { AssociativeArray, isAssociativeArray } = require('associativearray');
+
+var arr = new AssociativeArray();
+
+if (isAssociativeArray(arr)) {
+  console.log("it's AssociativeArray");
+} else {
+  console.log("something else");
+}
 ```
 ### Other methods
 ```javascript

@@ -1,3 +1,6 @@
+# v1.2.0 ( 10 dec 2017 )
+* isAssociativeArray
+
 # v1.1.0 ( 10 dec 2017 )
 Export to array form and import from it
 * AssociativeArray -> Array form -> AssociativeArray

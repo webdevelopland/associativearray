@@ -41,7 +41,7 @@ gulp.task('remove-dist', () => {
 });
 gulp.task('webpack', () => {
   return webpack(require( './webpack.config.js' ))
-    .pipe(rename('AssociativeArray.js'))
+    .pipe(rename('aa.js'))
     .pipe(minify())
     .pipe(gulp.dest('./dist'))
   ;
