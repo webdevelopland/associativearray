@@ -1,5 +1,5 @@
 # AssociativeArray
-## v1.2.0 ( last update: 10 dec 2017 )
+## v1.2.1 ( last update: 15 dec 2017 )
 Associative array. Typescript included.
 
 ### Install
@@ -163,7 +163,8 @@ console.log(arr.stringify());
 ```
 ### is that AssociativeArray?
 ```javascript
-const { AssociativeArray, isAssociativeArray } = require('associativearray');
+const { AssociativeArray } = require('associativearray');
+const { isAssociativeArray } = require('associativearray');
 
 var arr = new AssociativeArray();
 

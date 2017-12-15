@@ -1,3 +1,7 @@
+# v1.2.1 ( 15 dec 2017 )
+* AssociativeArray has field 'type' now
+* isAssociativeArray object.constructor.name fix
+
 # v1.2.0 ( 10 dec 2017 )
 * isAssociativeArray
 

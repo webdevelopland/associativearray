@@ -8,6 +8,7 @@ export class AssociativeArray {
   public values: any[];
   public length: number = 0;
   public keys: any;
+  public type: string = "AssociativeArray";
 
   private id: number;
 
