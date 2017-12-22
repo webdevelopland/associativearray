@@ -1,3 +1,7 @@
+### v1.2.2 ( 23 dec 2017 )
+* AssociativeArray doesn't have field 'type' anymore
+* isAssociativeArray instanceof realization
+
 ### v1.2.1 ( 15 dec 2017 )
 * AssociativeArray has field 'type' now
 * isAssociativeArray object.constructor.name fix

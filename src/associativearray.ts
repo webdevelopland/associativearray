@@ -1,14 +1,12 @@
 import { is, not, isObject, isArray, isString } from 'existjs';
 import { isAssociativeArray } from './is-associativearray';
-import { randstr } from './randstr';
+import { randstr } from 'rndmjs';
 
-// Dictinary
 export class AssociativeArray {
-  public names: any[];
+  public names: string[];
   public values: any[];
   public length: number = 0;
   public keys: any;
-  public type: string = "AssociativeArray";
 
   private id: number;
 
@@ -38,7 +36,7 @@ export class AssociativeArray {
 
   // Add new unnamed element
   push(value: any) {
-    var id: string = "unicid" + randstr(20) + this.id++;
+    var id: string = "id" + randstr(5) + this.id++;
     this.add(id, value);
     return id;
   }
@@ -92,7 +90,7 @@ export class AssociativeArray {
   }
 
   // Share values
-  share(associativeArray: AssociativeArray, names: Array<any>) {
+  share(associativeArray: AssociativeArray, names: string[]) {
     for (let name of names) {
       associativeArray.add(name, this.values[this.keys[name]]);
     }
@@ -171,7 +169,7 @@ export class AssociativeArray {
   }
 
   // Import from simple array
-  fromArray(array: Array<any>) {
+  fromArray(array: any[]) {
     for (let v of array) {
       this.push(v);
     }
@@ -200,7 +198,7 @@ export class AssociativeArray {
   }
 
   // Import from array form (recursive)
-  importArray(array: Array<any>) {
+  importArray(array: any[]) {
     for (let v of array) {
       if (not(v.name) || not(v.value) || not(v.type)) {
         throw "Invalid Array";
