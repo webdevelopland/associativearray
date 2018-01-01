@@ -1,3 +1,6 @@
+### v2.0.0 ( 2 jun 2018 )
+* Dictionary<T> is released
+
 ### v1.2.2 ( 23 dec 2017 )
 * AssociativeArray doesn't have field 'type' anymore
 * isAssociativeArray instanceof realization

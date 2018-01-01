@@ -1,111 +1,8 @@
-import { is, not, isObject, isArray, isString } from 'existjs';
-import { isAssociativeArray } from './is-associativearray';
-import { randstr } from 'rndmjs';
+import { Pattern } from './pattern';
+import { not, isObject, isArray, isString } from 'existjs';
+import { isAssociativeArray } from './validation';
 
-export class AssociativeArray {
-  public names: string[];
-  public values: any[];
-  public length: number = 0;
-  public keys: any;
-
-  private id: number;
-
-  constructor() {
-    this.names = [];
-    this.values = [];
-    this.id = 0;
-    this.keys = {};
-  }
-
-  // Add new element with name
-  add(name: string, value: any) {
-    if (is(this.keys[name])) {
-      this.change(name, value);
-      return;
-    }
-    this.names.push(name);
-    this.values.push(value);
-    this.length = this.names.length;
-    this.keys[name] = this.length - 1;
-  }
-
-  // Get value by name
-  value(name: string) {
-    return this.values[this.keys[name]];
-  }
-
-  // Add new unnamed element
-  push(value: any) {
-    var id: string = "id" + randstr(5) + this.id++;
-    this.add(id, value);
-    return id;
-  }
-
-  // Change value by name
-  change(name: string, value: any) {
-    if (not(this.keys[name])) {
-      return;
-    }
-    this.values[this.keys[name]] = value;
-  }
-
-  // Remote element by name
-  remove(name: string) {
-    if (not(this.keys[name])) {
-      return;
-    }
-    this.names.splice(this.keys[name], 1);
-    this.values.splice(this.keys[name], 1);
-    this.length = this.names.length;
-
-    delete this.keys[name];
-  }
-
-  // Get name by value. Only first occurrence. 
-  search(value: any) {
-    const i = this.values.indexOf(value);
-    if (i === -1) {
-      return undefined;
-    }
-    return this.names[i];
-  }
-
-  // Functional for
-  forEach(callback: Function) {
-    for (let i in this.names) {
-      let breakPoint = callback(this.names[i], this.values[i]);
-      if (breakPoint === "break") {
-        break;
-      }
-    }
-  }
-
-  // Copy AssociativeArray
-  copy(associativeArray: AssociativeArray) {
-    this.values = associativeArray.values.slice();
-    this.names = associativeArray.names.slice();
-    this.length = associativeArray.length;
-    this.id = Math.max(this.id, associativeArray.id);
-    this.updateKeys();
-  }
-
-  // Share values
-  share(associativeArray: AssociativeArray, names: string[]) {
-    for (let name of names) {
-      associativeArray.add(name, this.values[this.keys[name]]);
-    }
-    associativeArray.id = Math.max(associativeArray.id, this.id);
-  }
-
-  // Get string form of all elements
-  toString() {
-    var trace: string = "";
-    for (let i in this.names) {
-      trace += `[${this.names[i]}] ${this.values[i]}\n`;
-    };
-    return trace;
-  }
-
+export class AssociativeArray extends Pattern {
   // Recursive output
   stringify(tab: string = "") {
     var trace: string = "";
@@ -128,18 +25,6 @@ export class AssociativeArray {
     return trace;
   }
 
-  // Change name of element
-  rename(name: string, newname: string) {
-    this.add(newname, this.value(name));
-    this.remove(name);
-  }
-
-  // Reverse AssociativeArray
-  reverse() {
-    this.values.reverse();
-    this.names.reverse();
-  }
-
   // Get object (no recursion)
   object() {
     var object: any = {};
@@ -153,25 +38,6 @@ export class AssociativeArray {
   fromObject(object: any) {
     for (let name in object) {
       this.add(name, object[name]);
-    }
-  }
-
-  // Get simple array
-  array() {
-    var complex = [];
-    for (let i in this.names) {
-      complex.push({
-        name: this.names[i],
-        value: this.values[i]
-      });
-    }
-    return complex;
-  }
-
-  // Import from simple array
-  fromArray(array: any[]) {
-    for (let v of array) {
-      this.push(v);
     }
   }
 
@@ -214,49 +80,4 @@ export class AssociativeArray {
 
     }
   }
-
-  private updateKeys() {
-    var keys: any = {};
-    for (let i in this.names) {
-      keys[this.names[i]] = i;
-    }
-    this.keys = keys;
-  }
-
-  // Sort AssociativeArray
-  sort(handler: any) {
-    var array = this.array();
-    array.sort(handler);
-    for (let i in array) {
-      this.names[i] = array[i].name;
-      this.values[i] = array[i].value;
-    }
-    this.updateKeys();
-  }
-
-  // Shuffle AssociativeArray
-  shuffle() {
-    var array = this.array();
-    for (let i = array.length; i; i--) {
-      let j = Math.floor(Math.random() * i);
-      [array[i - 1], array[j]] = [array[j], array[i - 1]];
-    }
-    for (let i in array) {
-      this.names[i] = array[i].name;
-      this.values[i] = array[i].value;
-    }
-    this.updateKeys();
-  }
-
-  // Concat AssociativeArrays
-  concat(...associativeArrays: AssociativeArray[]) {
-    for (let associativeArray of associativeArrays) {
-      this.names = this.names.concat(associativeArray.names);
-      this.values = this.values.concat(associativeArray.values);
-      this.id = Math.max(this.id, associativeArray.id);
-    }
-    this.length = this.names.length;
-    this.updateKeys();
-  }
-
 }

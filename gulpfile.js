@@ -12,8 +12,8 @@ const minify = require('gulp-minify');
 gulp.task('default', gulpsync.sync([ 'compile', 'dist' ]));
 
 
-const tsPath = path.join( process.cwd(), 'src' );
-const jsPath = path.join( process.cwd(), 'js' );
+const tsPath = path.join( __dirname, 'src' );
+const jsPath = path.join( __dirname, 'js' );
 gulp.task('compile', gulpsync.sync([ 'remove-js-foler', 'ts' ]));
 gulp.task('remove-js-foler', () => {
   return gulp.src( './js' )
@@ -44,5 +44,12 @@ gulp.task('webpack', () => {
     .pipe(rename('aa.js'))
     .pipe(minify())
     .pipe(gulp.dest('./dist'))
+  ;
+});
+
+gulp.task('compile-test', () => {
+  return gulp.src(path.join( __dirname, 'test/test.ts' ))
+    .pipe(typescript(tsconfig.compilerOptions))
+    .pipe(gulp.dest('./test'))
   ;
 });

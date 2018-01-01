@@ -5,4 +5,5 @@ function exportAll(lib) {
 }
 
 exportAll(require('./js/associativearray'));
-exportAll(require('./js/is-associativearray'));
+exportAll(require('./js/dictionary'));
+exportAll(require('./js/validation'));
