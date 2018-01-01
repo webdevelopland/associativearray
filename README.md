@@ -28,6 +28,19 @@ Browser
 
 ## Dictionary and AssociativeArray
 
+Difference between Dictionary and AssociativeArray
+```typescript
+const { AssociativeArray, Dictionary } = require('associativearray');
+
+// AssociativeArray - Recursive, weakly typed container of data
+var aa = new AssociativeArray();
+
+// Dictionary - Linear, strongly typed container of data. 
+// Dictionary doesn't support recursive methods ( details below )
+var dict: Dictionary<string> = new Dictionary();
+}
+```
+
 ### How to use
 ```javascript
 var arr = new AssociativeArray();
@@ -178,7 +191,7 @@ if (isDictionary(dict)) {
 }
 ```
 
-## AssociativeArray only
+## AssociativeArray only ( recursive methods )
 
 ### Recursion method to output AssociativeArray
 ```javascript
