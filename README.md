@@ -41,7 +41,7 @@ var dict: Dictionary<string> = new Dictionary();
 }
 ```
 
-### How to use
+How to use
 ```javascript
 var arr = new AssociativeArray();
 var dogid = arr.push(  'dog'  );
@@ -55,7 +55,7 @@ arr.remove('garfield');
 arr.change('ara', 'parrot');
 console.log(arr.toString());
 ```
-### Looping
+Looping
 ```javascript
 var arr = new AssociativeArray();
 
@@ -77,7 +77,7 @@ arr.forEach((name, value) => {
   if (value === 'string 3') return 'break'; // Break loop
 });
 ```
-### search()
+search()
 ```javascript
 var arr = new AssociativeArray();
 
@@ -87,7 +87,7 @@ arr.add('string name 3', 'string 3');
 
 var name = arr.search('string 2'); // name = 'string name 2'
 ```
-### copy() & share()
+copy() & share()
 ```javascript
 var arr1 = new AssociativeArray();
 
@@ -105,7 +105,7 @@ var arr3 = new AssociativeArray();
 arr3.copy(arr1); // arr3 <- arr1
 console.log(arr3.toString());
 ```
-### Two way binding
+Two way binding
 ```javascript
 var arr = new AssociativeArray();
 arr.add('man1', 'Mike');
@@ -114,7 +114,7 @@ arr.add('man2', 'Sam');
 arr.values[arr.keys['man2']] = 'Bob';
 // But you can't do like that: arr.value('man2') = 'Bob';
 ```
-### Shuffle
+Shuffle
 ```javascript
 var arr = new AssociativeArray();
 for (let i = 0; i < 20; i++) {
@@ -125,7 +125,7 @@ console.log(arr.toString());
 arr.shuffle();
 console.log(arr.toString());
 ```
-### Sort
+Sort
 ```javascript
 var arr = new AssociativeArray();
 for (let i = 0; i < 20; i++) {
@@ -141,7 +141,7 @@ arr.sort((a, b) => {
 });
 console.log(arr.toString());
 ```
-### AssociativeArray -> Array
+AssociativeArray -> Array
 ```javascript
 var aa = new AssociativeArray();
 aa.add('name1', 'A');
@@ -151,7 +151,7 @@ aa.add('name3', 'C');
 var arrayForm = aa.array();
 console.log(arrayForm);
 ```
-### Array -> AssociativeArray
+Array -> AssociativeArray
 ```javascript
 var ClassicArray = ['A', 'B', 'C'];
 
@@ -161,7 +161,7 @@ console.log(aa.toString());
 
 // array() and fromArray() aren't cyclical methods
 ```
-### Other methods
+Other methods
 ```javascript
 arr.rename(name1, name2); // Rename element
 arr.reverse(); // Reverse AssociativeArray
@@ -193,12 +193,12 @@ if (isDictionary(dict)) {
 
 ## AssociativeArray only ( recursive methods )
 
-### Recursion method to output AssociativeArray
+Recursion method to output AssociativeArray
 ```javascript
 console.log( arr.stringify() );
 ```
 
-### AssociativeArray -> Array form -> AssociativeArray
+AssociativeArray -> Array form -> AssociativeArray
 ```javascript
 var aa = new AssociativeArray();
 aa.add('parent 1', 'A');
@@ -218,7 +218,7 @@ aa2.importArray(array);
 console.log(aa2.stringify());
 ```
 
-### object -> AssociativeArray
+object -> AssociativeArray
 ```javascript
 var object = {
   name: 'Mike',
@@ -229,7 +229,7 @@ var aa = new AssociativeArray();
 aa.fromObject(object);
 console.log(aa.stringify());
 ```
-### AssociativeArray -> object
+AssociativeArray -> object
 ```javascript
 var aa = new AssociativeArray();
 aa.add('name1', 'A');
