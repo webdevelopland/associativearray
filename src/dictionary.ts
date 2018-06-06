@@ -50,7 +50,7 @@ export class Dictionary<T> extends Pattern {
     super.fromArray(array);
   }
 
-  forEach(callback: (value: T, index: string) => string): void {
+  forEach(callback: (value: T, index: string) => string | void): void {
     super.forEach(callback);
   }
 
