@@ -77,10 +77,9 @@ export class Pattern {
     return this.names[i];
   }
 
-  // Functional for
   forEach(callback: Function): void {
     for (let i in this.names) {
-      let breakPoint = callback(this.names[i], this.values[i]);
+      let breakPoint = callback(this.values[i], this.names[i]);
       if (breakPoint === "break") {
         break;
       }

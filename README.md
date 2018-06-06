@@ -1,5 +1,5 @@
 # AssociativeArray
-## v2.1.0 ( last update: 6 jun 2018 )
+## v3.0.0 ( last update: 6 jun 2018 )
 Associative array. Typescript included.
 
 ### Install

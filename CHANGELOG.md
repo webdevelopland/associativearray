@@ -1,3 +1,6 @@
+### v3.0.0 ( 6 jun 2018 )
+* forEach(id, value) => forEach(value, id)
+
 ### v2.1.0 ( 6 jun 2018 )
 * declaration
 

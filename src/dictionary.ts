@@ -50,6 +50,10 @@ export class Dictionary<T> extends Pattern {
     super.fromArray(array);
   }
 
+  forEach(callback: (value: T, index: string) => string): void {
+    super.forEach(callback);
+  }
+
   sort(handler: (
     a: { name: string, value: T },
     b: { name: string, value: T }
