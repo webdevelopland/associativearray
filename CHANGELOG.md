@@ -1,4 +1,7 @@
-### v2.0.0 ( 2 jun 2018 )
+### v2.1.0 ( 6 jun 2018 )
+* declaration
+
+### v2.0.0 ( 2 jan 2018 )
 * Dictionary<T> is released
 
 ### v1.2.2 ( 23 dec 2017 )

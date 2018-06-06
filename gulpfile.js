@@ -46,10 +46,3 @@ gulp.task('webpack', () => {
     .pipe(gulp.dest('./dist'))
   ;
 });
-
-gulp.task('compile-test', () => {
-  return gulp.src(path.join( __dirname, 'test/test.ts' ))
-    .pipe(typescript(tsconfig.compilerOptions))
-    .pipe(gulp.dest('./test'))
-  ;
-});

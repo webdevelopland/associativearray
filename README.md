@@ -1,5 +1,5 @@
 # AssociativeArray
-## v2.0.0 ( last update: 2 jun 2018 )
+## v2.1.0 ( last update: 6 jun 2018 )
 Associative array. Typescript included.
 
 ### Install
@@ -38,7 +38,6 @@ var aa = new AssociativeArray();
 // Dictionary - Linear, strongly typed container of data. 
 // Dictionary doesn't support recursive methods ( details below )
 var dict: Dictionary<string> = new Dictionary();
-}
 ```
 
 How to use
@@ -65,13 +64,6 @@ arr.add('string name 2', 'string 2' );
 arr.push(                'string 3' );
 arr.push(                'string 4' );
 
-// Classic
-for (let i in arr.names) {
-  console.log(arr.names[i] + ', ' + arr.values[i]);
-  if (arr.values[i] === 'string 3') break;
-}
-
-// forEach
 arr.forEach((name, value) => {
   console.log(name + ', ' + value);
   if (value === 'string 3') return 'break'; // Break loop
