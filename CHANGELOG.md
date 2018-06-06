@@ -1,3 +1,6 @@
+### v3.0.2 ( 6 jun 2018 )
+* import bug fix
+
 ### v3.0.1 ( 6 jun 2018 )
 * forEach break bug fix
 

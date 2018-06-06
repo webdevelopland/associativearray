@@ -1,5 +1,5 @@
 # AssociativeArray
-## v3.0.1 ( last update: 6 jun 2018 )
+## v3.0.2 ( last update: 6 jun 2018 )
 Associative array. Typescript included.
 
 ### Install
@@ -22,7 +22,7 @@ Browser
 ```javascript
 <script src='/node_modules/associativearray/dist/aa-min.js'></script>
 <script>
-  var arr = new dist.AssociativeArray();
+  var arr = new aa.AssociativeArray();
 </script>
 ```
 

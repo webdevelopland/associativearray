@@ -1,4 +1,4 @@
-import { is, not } from 'existjs';
+import { exist } from 'existjs';
 import { randstr } from 'rndmjs';
 
 export class Pattern {
@@ -26,7 +26,7 @@ export class Pattern {
 
   // Add new element with name
   add(name: string, value: any): void {
-    if (is(this.keys[name])) {
+    if (exist(this.keys[name])) {
       this.change(name, value);
       return;
     }
@@ -50,7 +50,7 @@ export class Pattern {
 
   // Change value by name
   change(name: string, value: any): void {
-    if (not(this.keys[name])) {
+    if (!exist(this.keys[name])) {
       return;
     }
     this.values[this.keys[name]] = value;
@@ -58,7 +58,7 @@ export class Pattern {
 
   // Remote element by name
   remove(name: string): void {
-    if (not(this.keys[name])) {
+    if (!exist(this.keys[name])) {
       return;
     }
     this.names.splice(this.keys[name], 1);

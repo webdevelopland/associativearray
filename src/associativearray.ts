@@ -1,5 +1,6 @@
+import { exist, isObject, isArray, isString } from 'existjs';
+
 import { Pattern } from './pattern';
-import { not, isObject, isArray, isString } from 'existjs';
 import { isAssociativeArray } from './validation';
 
 export class AssociativeArray extends Pattern {
@@ -66,7 +67,7 @@ export class AssociativeArray extends Pattern {
   // Import from array form (recursive)
   importArray(array: any[]) {
     for (let v of array) {
-      if (not(v.name) || not(v.value) || not(v.type)) {
+      if (!exist(v.name) || !exist(v.value) || !exist(v.type)) {
         throw "Invalid Array";
       }
 

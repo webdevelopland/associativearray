@@ -1,7 +1,7 @@
 {
   "name": "associativearray",
   "description": "Associative array",
-  "version": "3.0.1",
+  "version": "3.0.2",
   "scripts": {
     "compile": "gulp"
   },
@@ -20,8 +20,8 @@
   ],
   "license": "MIT",
   "dependencies": {
-    "existjs": "^1.0.0",
-    "rndmjs": "^1.0.0"
+    "existjs": "2.1.0",
+    "rndmjs": "1.2.0"
   },
   "devDependencies": {
     "gulp": "3.9.1",
