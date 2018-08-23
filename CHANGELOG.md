@@ -1,3 +1,6 @@
+### v3.0.3 ( 24 aug 2018 )
+* splice bug fix
+
 ### v3.0.2 ( 6 jun 2018 )
 * import bug fix
 

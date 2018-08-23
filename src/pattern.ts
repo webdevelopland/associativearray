@@ -61,8 +61,15 @@ export class Pattern {
     if (!exist(this.keys[name])) {
       return;
     }
-    this.names.splice(this.keys[name], 1);
-    this.values.splice(this.keys[name], 1);
+    
+    if (this.length === 1) {
+      this.names = [];
+      this.values = [];
+    } else {
+      this.names.splice(this.keys[name], 1);
+      this.values.splice(this.keys[name], 1);
+    }
+    
     this.length = this.names.length;
 
     delete this.keys[name];
